@@ -552,26 +552,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector(`[data-lang="${lang}"]`).classList.remove('font-medium', 'text-gray-600');
     }
     
-    // 联系表单提交
-    const contactForm = document.getElementById('contact-form');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // 获取表单数据
-            const formData = new FormData(this);
-            
-            // 在实际应用中，这里应该发送表单数据到服务器
-            console.log('表单数据:', Object.fromEntries(formData));
-            
-            // 显示提交成功消息
-            alert('您的咨询已提交成功！我们将尽快与您联系。');
-            
-            // 重置表单
-            this.reset();
-        });
-    }
+    // 删除了联系表单提交代码，因为已移除表单元素
     
     // 产品询价
     const inquiryBtns = document.querySelectorAll('.inquiry-btn');

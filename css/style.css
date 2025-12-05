@@ -132,18 +132,7 @@ body {
     }
 }
 
-/* 联系表单样式 */
-#contact-form input,
-#contact-form select,
-#contact-form textarea {
-    transition: all 0.3s ease;
-}
-
-#contact-form input:focus,
-#contact-form select:focus,
-#contact-form textarea:focus {
-    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
-}
+/* 删除了联系表单样式，因为已移除表单元素 */
 
 /* 询价按钮样式 */
 .inquiry-btn {
