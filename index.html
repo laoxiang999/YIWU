@@ -1,642 +1,563 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>申沃进出口 - 国际贸易代理 | 义乌采购 | 库存尾货</title>
-    <!-- 外部 CDN 资源（稳定且支持跨域） -->
+    <title>source-offer - Бизнес услуги в Китае</title>
+    <!-- External Resources -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 本地 CSS 样式 -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- 网站图标（可选，需自行替换图片） -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fbff;
+        }
+        /* Color System */
+        .bg-primary-blue { background-color: #165DFF; }
+        .bg-secondary-blue { background-color: #4080FF; }
+        .bg-light-blue { background-color: #E8F3FF; }
+        .text-primary-blue { color: #165DFF; }
+        .text-secondary-blue { color: #4080FF; }
+        .border-primary-blue { border-color: #165DFF; }
+        
+        /* Animation */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px -8px rgba(22, 93, 255, 0.15);
+        }
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
-    <!-- 顶部语言选择栏 -->
-    <div class="bg-gray-100 py-2">
-        <div class="container mx-auto px-4 flex justify-end items-center">
-            <div class="flex space-x-4">
-                <button class="lang-btn text-sm font-medium hover:text-blue-800 transition-colors" data-lang="zh">中文</button>
-                <button class="lang-btn text-sm font-medium hover:text-blue-800 transition-colors" data-lang="en">English</button>
-                <button class="lang-btn text-sm font-medium hover:text-blue-800 transition-colors" data-lang="ru">Русский</button>
-                <button class="lang-btn text-sm font-medium hover:text-blue-800 transition-colors" data-lang="uk">Українська</button>
+<body class="text-gray-800 antialiased">
+    <!-- Header (Contact Info + Language Switch) -->
+    <header class="bg-primary-blue text-white shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <!-- Contact Information -->
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <a href="mailto:317848118@qq.com" class="flex items-center gap-2 hover:text-blue-100 transition-colors">
+                        <i class="fa-solid fa-envelope text-lg"></i>
+                        <span class="text-sm md:text-base">317848118@qq.com</span>
+                    </a>
+                    <a href="tel:+8615258955759" class="flex items-center gap-2 hover:text-blue-100 transition-colors">
+                        <i class="fa-solid fa-phone text-lg"></i>
+                        <span class="text-sm md:text-base">+8615258955759</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-2 hover:text-blue-100 transition-colors">
+                        <i class="fa-brands fa-weixin text-lg"></i>
+                    </a>
+                    <a href="#" class="flex items-center gap-2 hover:text-blue-100 transition-colors">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                    </a>
+                    <a href="#" class="flex items-center gap-2 hover:text-blue-100 transition-colors">
+                        <i class="fa-brands fa-telegram text-lg"></i>
+                    </a>
+                    <a href="#" class="flex items-center gap-2 hover:text-blue-100 transition-colors">
+                        <i class="fa-brands fa-instagram text-lg"></i>
+                    </a>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-lg"></i>
+                        <span class="text-sm md:text-base">YIWU, Китай</span>
+                    </div>
+                </div>
+                
+                <!-- Language Switcher -->
+                <div class="flex gap-3">
+                    <button id="lang-ru" class="px-4 py-1.5 bg-white text-primary-blue rounded-md font-medium hover:bg-blue-50 transition-colors text-sm">Русский</button>
+                    <button id="lang-uk" class="px-4 py-1.5 bg-transparent border border-white rounded-md font-medium hover:bg-blue-800/30 transition-colors text-sm">Українська</button>
+                </div>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- 导航栏 -->
+    <!-- Navigation Bar -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <div>
-                    <div class="flex items-center">
-                        <a href="#" class="text-2xl font-bold text-blue-900">
-                            <span class="text-yellow-600">申沃</span>进出口 <span class="text-white bg-blue-900 px-1 rounded">source-offer</span>
-                        </a>
-                    </div>
-                    
-                    <!-- 页头联系方式 - 放在LOGO下方 -->
-                    <div class="flex items-center space-x-4 mt-1 text-blue-900 font-medium">
-                        <a href="https://wa.me/8615258955759" target="_blank" class="flex items-center hover:text-green-600 transition-colors">
-                            <i class="fab fa-whatsapp mr-1"></i> WhatsApp
-                        </a>
-                        <span class="text-gray-300">|</span>
-                        <a href="https://t.me/+8615258955759" target="_blank" class="flex items-center hover:text-blue-700 transition-colors">
-                            <i class="fab fa-telegram mr-1"></i> Telegram
-                        </a>
-                    </div>
+            <div class="flex justify-between items-center py-3">
+                <!-- Logo -->
+                <a href="#" class="flex items-center">
+                    <span class="text-xl md:text-2xl font-bold text-primary-blue">source-offer</span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center gap-6 md:gap-8">
+                    <a href="#opt" class="text-sm md:text-base font-medium text-gray-600 hover:text-primary-blue hover:underline underline-offset-4 transition-all duration-300" data-translate="nav-opt">Оптовые закупки</a>
+                    <a href="#delivery" class="text-sm md:text-base font-medium text-gray-600 hover:text-primary-blue hover:underline underline-offset-4 transition-all duration-300" data-translate="nav-delivery">Доставка грузов</a>
+                    <a href="#suppliers" class="text-sm md:text-base font-medium text-gray-600 hover:text-primary-blue hover:underline underline-offset-4 transition-all duration-300" data-translate="nav-suppliers">Поиск поставщиков</a>
+                    <a href="#translation" class="text-sm md:text-base font-medium text-gray-600 hover:text-primary-blue hover:underline underline-offset-4 transition-all duration-300" data-translate="nav-translation">Переводы</a>
+                    <a href="#tour" class="text-sm md:text-base font-medium text-gray-600 hover:text-primary-blue hover:underline underline-offset-4 transition-all duration-300" data-translate="nav-tour">Мебельный тур</a>
+                    <a href="#other" class="text-sm md:text-base font-medium text-gray-600 hover:text-primary-blue hover:underline underline-offset-4 transition-all duration-300" data-translate="nav-other">Другие услуги</a>
                 </div>
                 
-                <!-- 桌面导航 -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="nav-link active-nav text-gray-800 hover:text-blue-900 font-medium" data-lang-key="nav-home">首页</a>
-                    <a href="#services" class="nav-link text-gray-800 hover:text-blue-900 font-medium" data-lang-key="nav-services">业务服务</a>
-                    <a href="#products" class="nav-link text-gray-800 hover:text-blue-900 font-medium" data-lang-key="nav-products">库存尾货</a>
-                    <a href="#about" class="nav-link text-gray-800 hover:text-blue-900 font-medium" data-lang-key="nav-about">关于我们</a>
-                    <a href="#contact" class="nav-link text-gray-800 hover:text-blue-900 font-medium" data-lang-key="nav-contact">联系我们</a>
-                </div>
-                
-                <!-- 移动端菜单按钮 -->
-                <div class="md:hidden">
-                    <button id="menu-toggle" class="text-gray-800 hover:text-blue-900 focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- 移动端导航菜单 -->
-            <div id="mobile-menu" class="md:hidden hidden pb-4">
-                <a href="#home" class="block py-2 text-gray-800 hover:text-blue-900 font-medium" data-lang-key="nav-home">首页</a>
-                <a href="#services" class="block py-2 text-gray-800 hover:text-blue-900 font-medium" data-lang-key="nav-services">业务服务</a>
-                <a href="#products" class="block py-2 text-gray-800 hover:text-blue-900 font-medium" data-lang-key="nav-products">库存尾货</a>
-                <a href="#about" class="block py-2 text-gray-800 hover:text-blue-900 font-medium" data-lang-key="nav-about">关于我们</a>
-                <a href="#contact" class="block py-2 text-gray-800 hover:text-blue-900 font-medium" data-lang-key="nav-contact">联系我们</a>
-                
-                <!-- 移动端页头联系方式 -->
-                <div class="border-t border-gray-200 mt-2 pt-2 space-y-2">
-                    <a href="https://wa.me/8615258955759" target="_blank" class="flex items-center py-2 text-green-600 hover:text-green-700 transition-colors">
-                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp: +8615258955759
-                    </a>
-                    <a href="https://t.me/+8615258955759" target="_blank" class="flex items-center py-2 text-blue-900 hover:text-blue-700 transition-colors">
-                        <i class="fab fa-telegram mr-2"></i> Telegram: @source_offer
-                    </a>
-                </div>
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-primary-blue text-2xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- 英雄区域 -->
-    <section id="home" class="hero-section text-white py-20 md:py-32">
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center py-20 md:py-32 text-white overflow-hidden" style="background-image: url('images/banner.jpg')">
+        <div class="absolute inset-0 bg-primary-blue/70 z-0"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-6 leading-tight" data-translate="hero-title">Бизнес услуги в Китае</h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] max-w-3xl mx-auto mb-10 opacity-90 leading-relaxed" data-translate="hero-text">
+                Представительство, переводы, посредничество, оптовые закупки и доставка грузов из Китая в Россию и страны СНГ
+            </p>
+            <a href="#services" class="inline-block bg-white text-primary-blue font-semibold px-8 py-3 rounded-md shadow-lg hover:bg-blue-50 transition-colors" data-translate="hero-button">
+                Узнать больше о услугах
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="max-w-3xl mx-auto text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 fade-in" data-lang-key="hero-title">
-                    专业国际贸易代理服务
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 opacity-90 fade-in" data-lang-key="hero-subtitle">
-                    连接中国制造商与全球采购商，提供一站式贸易解决方案
-                </p>
-                <div class="flex flex-col md:flex-row justify-center gap-4 fade-in">
-                    <a href="#services" class="btn-primary px-8 py-3 rounded-lg font-medium text-lg">
-                        <span data-lang-key="hero-btn-services">了解我们的服务</span>
-                    </a>
-                    <a href="#contact" class="btn-secondary px-8 py-3 rounded-lg font-medium text-lg">
-                        <span data-lang-key="hero-btn-contact">立即咨询</span>
-                    </a>
+            <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary-blue" data-translate="services-title">Наши услуги</h2>
+            
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 1. Оптовые закупки -->
+                <div id="opt" class="bg-light-blue rounded-xl p-7 shadow-sm card-hover">
+                    <div class="w-16 h-16 bg-primary-blue rounded-full flex items-center justify-center text-white text-2xl mb-5">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-primary-blue" data-translate="service-opt-title">Оптовые закупки из Китая</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-opt-1">Закупки с 1688.com, Poizon/Dewu</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-opt-2">Закупки напрямую из фабрик</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-opt-3">Посредничество в оптовых сделках</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 2. Доставка грузов -->
+                <div id="delivery" class="bg-light-blue rounded-xl p-7 shadow-sm card-hover">
+                    <div class="w-16 h-16 bg-primary-blue rounded-full flex items-center justify-center text-white text-2xl mb-5">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-primary-blue" data-translate="service-delivery-title">Доставка грузов</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-delivery-1">Доставка в Россию и СНГ</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-delivery-2">Посылки, сборные грузы, контейнеры</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-delivery-3">Контроль погрузки товара</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 3. Поиск поставщиков -->
+                <div id="suppliers" class="bg-light-blue rounded-xl p-7 shadow-sm card-hover">
+                    <div class="w-16 h-16 bg-primary-blue rounded-full flex items-center justify-center text-white text-2xl mb-5">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-primary-blue" data-translate="service-suppliers-title">Поиск поставщиков</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-suppliers-1">Поиск надежных фабрик в Китае</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-suppliers-2">Инспектирование фабрик</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-suppliers-3">Проверка качества товара</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 4. Переводческие услуги -->
+                <div id="translation" class="bg-light-blue rounded-xl p-7 shadow-sm card-hover">
+                    <div class="w-16 h-16 bg-primary-blue rounded-full flex items-center justify-center text-white text-2xl mb-5">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-primary-blue" data-translate="service-translation-title">Переводческие услуги</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-translation-1">Устные и письменные переводы</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-translation-2">Сопровождение на выставках</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-translation-3">Сопровождение на фабриках</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 5. Мебельный тур -->
+                <div id="tour" class="bg-light-blue rounded-xl p-7 shadow-sm card-hover">
+                    <div class="w-16 h-16 bg-primary-blue rounded-full flex items-center justify-center text-white text-2xl mb-5">
+                        <i class="fa-solid fa-couch"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-primary-blue" data-translate="service-tour-title">Мебельный тур в Китай</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-tour-1">Поездка в Гуанчжоу, Фошань</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-tour-2">Сопровождение на мебельных рынках</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-tour-3">Закупка товаров для дома/офиса</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 6. Другие услуги -->
+                <div id="other" class="bg-light-blue rounded-xl p-7 shadow-sm card-hover">
+                    <div class="w-16 h-16 bg-primary-blue rounded-full flex items-center justify-center text-white text-2xl mb-5">
+                        <i class="fa-solid fa-handshake-angle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-primary-blue" data-translate="service-other-title">Другие бизнес услуги</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-other-1">Представительство интересов в Китае</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-other-2">Организация бизнес-поездок</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-secondary-blue mt-1"></i>
+                            <span data-translate="service-other-3">Продажа майнинг оборудования</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service Coverage -->
+            <div class="mt-16 bg-light-blue rounded-xl p-8 shadow-sm">
+                <h3 class="text-2xl font-bold mb-6 text-primary-blue text-center">География услуг</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center md:text-left">
+                        <h4 class="font-semibold text-lg mb-3 text-primary-blue">Город ИУ</h4>
+                        <p class="text-gray-700">Гуанчжоу, Шэньчжэнь, Фошань, Дунгуань, Чжуншань</p>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h4 class="font-semibold text-lg mb-3 text-primary-blue">Весь Китай</h4>
+                        <p class="text-gray-700">Гонконг, Макао, и другие провинции Китая</p>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h4 class="font-semibold text-lg mb-3 text-primary-blue">Получатели услуг</h4>
+                        <p class="text-gray-700">Россия, страны СНГ и другие страны мира</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 业务服务 -->
-    <section id="services" class="py-16 md:py-24 bg-white">
+    <!-- About Me Section -->
+    <section class="py-16 md:py-20 bg-primary-blue text-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in" data-lang-key="services-title">我们的业务服务</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto fade-in" data-lang-key="services-subtitle">
-                    提供全方位的国际贸易代理服务，助力您的业务全球化
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- 服务卡片 1 -->
-                <div class="service-card bg-white rounded-xl shadow-lg p-6 fade-in">
-                    <div class="service-icon text-blue-900 text-4xl mb-4">
-                        <i class="fas fa-boxes"></i>
+            <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-center mb-10">О себе</h2>
+            <div class="max-w-2xl mx-auto bg-white rounded-xl p-8 shadow-lg text-gray-700">
+                <h3 class="text-xl font-bold mb-6 text-primary-blue">Контактная информация:</h3>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <span class="font-semibold w-48">Телефон в Китае / Wechat:</span>
+                        <span>+8615258955759</span>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3" data-lang-key="service-1-title">库存尾货信息收集</h3>
-                    <p class="text-gray-600 mb-4" data-lang-key="service-1-desc">
-                        收集各类商品库存尾货信息，为采购商提供质优价廉的货源选择
-                    </p>
-                    <a href="#products" class="text-blue-900 hover:text-blue-700 font-medium flex items-center" data-lang-key="service-learn-more">
-                        了解更多 <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <div class="flex items-start">
+                        <span class="font-semibold w-48">Почта:</span>
+                        <span>317848118@qq.com</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="font-semibold w-48">VK:</span>
+                        <span>+8615258955759</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="font-semibold w-48">Instagram:</span>
+                        <a href="https://www.instagram.com/+8615258955759" class="text-primary-blue hover:underline" target="_blank">https://www.instagram.com/+8615258955759</a>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="font-semibold w-48">Контактное лицо:</span>
+                        <span>XiongqiangZhang(Лёша)</span>
+                    </div>
                 </div>
                 
-                <!-- 服务卡片 2 -->
-                <div class="service-card bg-white rounded-xl shadow-lg p-6 fade-in">
-                    <div class="service-icon text-blue-900 text-4xl mb-4">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3" data-lang-key="service-2-title">义乌代理采购</h3>
-                    <p class="text-gray-600 mb-4" data-lang-key="service-2-desc">
-                        专业义乌市场采购代理，为您筛选优质供应商，确保商品质量与交期
-                    </p>
-                    <a href="#contact" class="text-blue-900 hover:text-blue-700 font-medium flex items-center" data-lang-key="service-learn-more">
-                        了解更多 <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                
-                <!-- 服务卡片 3 -->
-                <div class="service-card bg-white rounded-xl shadow-lg p-6 fade-in">
-                    <div class="service-icon text-blue-900 text-4xl mb-4">
-                        <i class="fas fa-file-contract"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3" data-lang-key="service-3-title">进出口代理</h3>
-                    <p class="text-gray-600 mb-4" data-lang-key="service-3-desc">
-                        提供专业的进出口代理服务，包括单证制作、报关报检、信用证操作等
-                    </p>
-                    <a href="#contact" class="text-blue-900 hover:text-blue-700 font-medium flex items-center" data-lang-key="service-learn-more">
-                        了解更多 <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                
-                <!-- 服务卡片 4 -->
-                <div class="service-card bg-white rounded-xl shadow-lg p-6 fade-in">
-                    <div class="service-icon text-blue-900 text-4xl mb-4">
-                        <i class="fas fa-ship"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3" data-lang-key="service-4-title">货运代理</h3>
-                    <p class="text-gray-600 mb-4" data-lang-key="service-4-desc">
-                        提供国际海运、空运、陆运代理服务，为您选择最优物流方案
-                    </p>
-                    <a href="#contact" class="text-blue-900 hover:text-blue-700 font-medium flex items-center" data-lang-key="service-learn-more">
-                        了解更多 <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                <div class="mt-8 space-y-4 text-gray-700">
+                    <p>Имея многолетний опыт в различных сферах, владея письменным и устным китайским языком местный представитель в ИУ Китая станет тем самым своим человеком в Китае для Вас!</p>
+                    
+                    <p>В случае, если Вам нужен представитель в Китае, в ИУ и окрестных городах, то просто свяжитесь со мной.</p>
+                    
+                    <p class="font-semibold">С Уважением, Чжан сюнциян(Лёша)</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 库存尾货信息 -->
-    <section id="products" class="py-16 md:py-24 bg-gray-50">
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 md:py-16">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in" data-lang-key="products-title">库存尾货信息</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto fade-in" data-lang-key="products-subtitle">
-                    我们收集了大量优质库存尾货信息，为您提供极具竞争力的价格
-                </p>
-            </div>
-            
-            <!-- 搜索和筛选 -->
-            <div class="mb-10 fade-in">
-                <div class="flex flex-col md:flex-row gap-4">
-                    <div class="flex-grow">
-                        <div class="relative">
-                            <input type="text" id="product-search" placeholder="搜索产品..." 
-                                   class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent">
-                            <button class="absolute right-3 top-3 text-gray-500 hover:text-blue-900">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <!-- Company Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-secondary-blue">ПредставительCH</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Надежный партнер для бизнеса между Китаем, Россией и странами СНГ. Комплексные решения для успешного сотрудничества.
+                    </p>
                     <div class="flex gap-4">
-                        <select id="category-filter" class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent">
-                            <option value="all" data-lang-key="filter-all">所有类别</option>
-                            <option value="clothing" data-lang-key="filter-clothing">服装纺织</option>
-                            <option value="electronics" data-lang-key="filter-electronics">电子产品</option>
-                            <option value="home" data-lang-key="filter-home">家居用品</option>
-                            <option value="toys" data-lang-key="filter-toys">玩具礼品</option>
-                        </select>
-                        <button id="filter-btn" class="btn-primary px-4 py-3 rounded-lg">
-                            <i class="fas fa-filter mr-2"></i> <span data-lang-key="filter-btn">筛选</span>
-                        </button>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-xl">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-xl">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-xl">
+                            <i class="fa-brands fa-viber"></i>
+                        </a>
                     </div>
                 </div>
-            </div>
-            
-            <!-- 产品列表 -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="product-list">
-                <!-- 产品卡片 1 -->
-                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden fade-in" data-category="clothing">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="images/product1.jpg" 
-                             alt="女士服装尾货" 
-                             class="product-image w-full h-full object-cover">
-                        <div class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded">
-                            热销
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-lang-key="product-1-title">女士时尚服装尾货</h3>
-                        <p class="text-gray-600 text-sm mb-3" data-lang-key="product-1-desc">
-                            品牌女士服装尾货，包括连衣裙、外套、裤子等，质量优良，价格优惠
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-blue-900 font-bold">¥15-35 / 件</span>
-                            <span class="text-gray-500 text-sm" data-lang-key="product-stock">库存: 5000件</span>
-                        </div>
-                    </div>
-                    <div class="px-4 py-3 bg-gray-50 border-t border-gray-100">
-                        <button class="inquiry-btn w-full py-2 bg-blue-900 text-white rounded hover:bg-blue-800 transition-colors" data-product="product-1">
-                            <span data-lang-key="product-inquiry">询价</span>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- 产品卡片 2 -->
-                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden fade-in" data-category="electronics">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="images/product2.jpg" 
-                             alt="电子产品库存" 
-                             class="product-image w-full h-full object-cover">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-lang-key="product-2-title">电子产品库存尾货</h3>
-                        <p class="text-gray-600 text-sm mb-3" data-lang-key="product-2-desc">
-                            各类电子产品库存，包括手机配件、充电器、耳机等，全新原包装
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-blue-900 font-bold">¥5-25 / 件</span>
-                            <span class="text-gray-500 text-sm" data-lang-key="product-stock">库存: 10000件</span>
-                        </div>
-                    </div>
-                    <div class="px-4 py-3 bg-gray-50 border-t border-gray-100">
-                        <button class="inquiry-btn w-full py-2 bg-blue-900 text-white rounded hover:bg-blue-800 transition-colors" data-product="product-2">
-                            <span data-lang-key="product-inquiry">询价</span>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- 产品卡片 3 -->
-                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden fade-in" data-category="home">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="images/product3.jpg" 
-                             alt="家居用品尾货" 
-                             class="product-image w-full h-full object-cover">
-                        <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-                            特价
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-lang-key="product-3-title">家居用品尾货</h3>
-                        <p class="text-gray-600 text-sm mb-3" data-lang-key="product-3-desc">
-                            厨房用品、清洁用品、家纺等家居产品尾货，质量好，价格低
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-blue-900 font-bold">¥3-15 / 件</span>
-                            <span class="text-gray-500 text-sm" data-lang-key="product-stock">库存: 8000件</span>
-                        </div>
-                    </div>
-                    <div class="px-4 py-3 bg-gray-50 border-t border-gray-100">
-                        <button class="inquiry-btn w-full py-2 bg-blue-900 text-white rounded hover:bg-blue-800 transition-colors" data-product="product-3">
-                            <span data-lang-key="product-inquiry">询价</span>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- 产品卡片 4 -->
-                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden fade-in" data-category="toys">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="images/product4.jpg" 
-                             alt="玩具礼品尾货" 
-                             class="product-image w-full h-full object-cover">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2" data-lang-key="product-4-title">玩具礼品尾货</h3>
-                        <p class="text-gray-600 text-sm mb-3" data-lang-key="product-4-desc">
-                            各类玩具、礼品、装饰品尾货，适合节日促销和礼品市场
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-blue-900 font-bold">¥2-10 / 件</span>
-                            <span class="text-gray-500 text-sm" data-lang-key="product-stock">库存: 12000件</span>
-                        </div>
-                    </div>
-                    <div class="px-4 py-3 bg-gray-50 border-t border-gray-100">
-                        <button class="inquiry-btn w-full py-2 bg-blue-900 text-white rounded hover:bg-blue-800 transition-colors" data-product="product-4">
-                            <span data-lang-key="product-inquiry">询价</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 加载更多按钮 -->
-            <div class="text-center mt-12">
-                <button id="load-more" class="btn-primary px-8 py-3 rounded-lg font-medium">
-                    <span data-lang-key="load-more">加载更多</span>
-                </button>
-            </div>
-        </div>
-    </section>
 
-    <!-- 关于我们 -->
-    <section id="about" class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in" data-lang-key="about-title">关于我们</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto fade-in" data-lang-key="about-subtitle">
-                    专业的国际贸易代理服务提供商，致力于连接中国制造商与全球采购商
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <img src="images/about-image.jpg" 
-                         alt="义乌小商品市场" 
-                         class="rounded-lg shadow-xl w-full">
-                </div>
-                
-                <div class="fade-in">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4" data-lang-key="about-company">公司简介</h3>
-                    <p class="text-gray-700 mb-6" data-lang-key="about-intro">
-                        我们是一家专业的国际贸易代理服务公司，专注于为乌克兰、俄罗斯及独联体国家的客户提供高质量的采购代理、库存尾货信息收集、进出口代理和货运代理服务。
-                    </p>
-                    <p class="text-gray-700 mb-6" data-lang-key="about-experience">
-                        凭借多年的行业经验和专业知识，我们已与众多中国制造商和供应商建立了稳定的合作关系，能够为客户提供具有竞争力的价格和优质的产品。
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="flex items-center">
-                            <div class="text-blue-900 text-3xl mr-4">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900" data-lang-key="about-quality">优质产品</h4>
-                                <p class="text-gray-600 text-sm" data-lang-key="about-quality-desc">严格质量控制</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <div class="text-blue-900 text-3xl mr-4">
-                                <i class="fas fa-dollar-sign"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900" data-lang-key="about-price">优惠价格</h4>
-                                <p class="text-gray-600 text-sm" data-lang-key="about-price-desc">极具竞争力的价格</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <div class="text-blue-900 text-3xl mr-4">
-                                <i class="fas fa-truck"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900" data-lang-key="about-delivery">快捷交付</h4>
-                                <p class="text-gray-600 text-sm" data-lang-key="about-delivery-desc">高效物流服务</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <div class="text-blue-900 text-3xl mr-4">
-                                <i class="fas fa-headset"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900" data-lang-key="about-service">专业服务</h4>
-                                <p class="text-gray-600 text-sm" data-lang-key="about-service-desc">多语言客户支持</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="#contact" class="btn-primary inline-block px-6 py-3 rounded-lg font-medium">
-                        <span data-lang-key="about-contact">联系我们</span>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- 服务区域 -->
-            <div class="mt-20">
-                <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center fade-in" data-lang-key="about-regions">我们的服务区域</h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in">
-                    <div class="bg-gray-50 p-6 rounded-lg text-center">
-                        <div class="text-blue-900 text-4xl mb-4">
-                            <i class="fas fa-map-marked-alt"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-gray-900 mb-2" data-lang-key="region-ukraine">乌克兰</h4>
-                        <p class="text-gray-600" data-lang-key="region-ukraine-desc">
-                            基辅、敖德萨、哈尔科夫等主要城市
-                        </p>
-                    </div>
-                    
-                    <div class="bg-gray-50 p-6 rounded-lg text-center">
-                        <div class="text-blue-900 text-4xl mb-4">
-                            <i class="fas fa-map-marked-alt"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-gray-900 mb-2" data-lang-key="region-russia">俄罗斯</h4>
-                        <p class="text-gray-600" data-lang-key="region-russia-desc">
-                            莫斯科、圣彼得堡、叶卡捷琳堡等主要城市
-                        </p>
-                    </div>
-                    
-                    <div class="bg-gray-50 p-6 rounded-lg text-center">
-                        <div class="text-blue-900 text-4xl mb-4">
-                            <i class="fas fa-map-marked-alt"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-gray-900 mb-2" data-lang-key="region-cis">独联体国家</h4>
-                        <p class="text-gray-600" data-lang-key="region-cis-desc">
-                            哈萨克斯坦、白俄罗斯、乌兹别克斯坦等国家
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 联系我们 -->
-    <section id="contact" class="py-16 md:py-24 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in" data-lang-key="contact-title">联系我们</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto fade-in" data-lang-key="contact-subtitle">
-                    无论您有任何问题或需求，我们都将竭诚为您服务
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 gap-12">
-                <!-- 联系信息 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 fade-in">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6" data-lang-key="contact-info-title">联系方式</h3>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="text-blue-900 text-2xl mt-1 mr-4">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1" data-lang-key="contact-address">地址</h4>
-                                <p class="text-gray-600" data-lang-key="contact-address-desc">浙江省义乌市国际商贸城一区</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="text-blue-900 text-2xl mt-1 mr-4">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1" data-lang-key="contact-phone">电话/微信</h4>
-                                <p class="text-gray-600">+86 15258955759</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="text-blue-900 text-2xl mt-1 mr-4">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1" data-lang-key="contact-email">邮箱</h4>
-                                <p class="text-gray-600">317848118@qq.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="text-blue-900 text-2xl mt-1 mr-4">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1" data-lang-key="contact-time">工作时间</h4>
-                                <p class="text-gray-600" data-lang-key="contact-time-desc">周一至周日 8:00 - 20:00</p>
-                            </div>
-                        </div>
-                        
-                        <!-- 社交平台账号 -->
-                        <div class="flex items-start">
-                            <div class="text-blue-900 text-2xl mt-1 mr-4">
-                                <i class="fas fa-share-alt"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1">社交平台</h4>
-                                <div class="space-y-2">
-                                    <p class="text-gray-600 flex items-center">
-                                        <i class="fab fa-weixin text-green-500 mr-2"></i> 微信: +86 15258955759
-                                    </p>
-                                    <p class="text-gray-600 flex items-center">
-                                        <i class="fab fa-whatsapp text-green-600 mr-2"></i> WhatsApp: +8615258955759
-                                    </p>
-                                    <p class="text-gray-600 flex items-center">
-                                        <i class="fab fa-telegram text-blue-500 mr-2"></i> Telegram: @source_offer
-                                    </p>
-                                    <p class="text-gray-600 flex items-center">
-                                        <i class="fab fa-vk text-blue-600 mr-2"></i> VK: +8615258955759
-                                    </p>
-                                    <p class="text-gray-600 flex items-center">
-                                        <i class="fab fa-instagram text-pink-500 mr-2"></i> Instagram: @source_offer
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 多语言客服 -->
-                    <div class="bg-white rounded-xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-6" data-lang-key="contact-service-title">多语言客服</h3>
-                        
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="flex items-center p-4 bg-gray-50 rounded-lg">
-                                <div class="text-blue-900 text-2xl mr-4">
-                                    <i class="fas fa-language"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900">中文/英语</h4>
-                                    <p class="text-gray-600 text-sm">随时在线</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center p-4 bg-gray-50 rounded-lg">
-                                <div class="text-blue-900 text-2xl mr-4">
-                                    <i class="fas fa-language"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900">俄语/乌克兰语</h4>
-                                    <p class="text-gray-600 text-sm">随时在线</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer class="bg-blue-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Services Links -->
                 <div>
-                    <h3 class="text-xl font-bold mb-4">申沃进出口</h3>
-                    <p class="text-gray-300 mb-4">专业的国际贸易代理服务提供商，连接中国与全球市场</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                            <i class="fab fa-weixin text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                            <i class="fab fa-telegram text-xl"></i>
-                        </a>
-                        <a href="https://wa.me/8615258955759" target="_blank" class="text-gray-300 hover:text-white transition-colors">
-                            <i class="fab fa-whatsapp text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                            <i class="fab fa-vk text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold mb-4" data-lang-key="footer-services">服务项目</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#services" class="text-gray-300 hover:text-white transition-colors" data-lang-key="footer-service-1">库存尾货信息收集</a></li>
-                        <li><a href="#services" class="text-gray-300 hover:text-white transition-colors" data-lang-key="footer-service-2">义乌代理采购</a></li>
-                        <li><a href="#services" class="text-gray-300 hover:text-white transition-colors" data-lang-key="footer-service-3">进出口代理</a></li>
-                        <li><a href="#services" class="text-gray-300 hover:text-white transition-colors" data-lang-key="footer-service-4">货运代理</a></li>
+                    <h3 class="text-xl font-bold mb-4 text-secondary-blue" data-translate="footer-services-title">Услуги</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#opt" class="hover:text-white transition-colors" data-translate="footer-opt">Оптовые закупки</a></li>
+                        <li><a href="#delivery" class="hover:text-white transition-colors" data-translate="footer-delivery">Доставка грузов</a></li>
+                        <li><a href="#suppliers" class="hover:text-white transition-colors" data-translate="footer-suppliers">Поиск поставщиков</a></li>
+                        <li><a href="#translation" class="hover:text-white transition-colors" data-translate="footer-translation">Переводческие услуги</a></li>
+                        <li><a href="#tour" class="hover:text-white transition-colors" data-translate="footer-tour">Мебельный тур</a></li>
                     </ul>
                 </div>
-                
+
+                <!-- Contact Info -->
                 <div>
-                    <h3 class="text-xl font-bold mb-4" data-lang-key="footer-links">快速链接</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-300 hover:text-white transition-colors" data-lang-key="footer-link-1">首页</a></li>
-                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors" data-lang-key="footer-link-2">关于我们</a></li>
-                        <li><a href="#products" class="text-gray-300 hover:text-white transition-colors" data-lang-key="footer-link-3">库存尾货</a></li>
-                        <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors" data-lang-key="footer-link-4">联系我们</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold mb-4" data-lang-key="footer-contact">联系我们</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-gray-300">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>浙江省义乌市国际商贸城一区</span>
+                    <h3 class="text-xl font-bold mb-4 text-secondary-blue" data-translate="footer-contact-title">Контакты</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-envelope mt-1 text-secondary-blue"></i>
+                            <a href="mailto:317848118@qq.com" class="hover:text-secondary-blue transition-colors">317848118@qq.com</a>
                         </li>
-                        <li class="flex items-center text-gray-300">
-                            <i class="fas fa-phone mr-2"></i>
-                            <span>+86 15258955759</span>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-phone mt-1 text-secondary-blue"></i>
+                            <a href="tel:+8615258955759" class="hover:text-secondary-blue transition-colors">+8615258955759</a>
                         </li>
-                        <li class="flex items-center text-gray-300">
-                            <i class="fas fa-envelope mr-2"></i>
-                            <span>317848118@qq.com</span>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-brands fa-weixin mt-1 text-secondary-blue"></i>
+                            <a href="#" class="hover:text-secondary-blue transition-colors">+8615258955759</a>
                         </li>
-                        <li class="flex items-center text-gray-300">
-                            <i class="fab fa-whatsapp mr-2"></i>
-                            <span>+8615258955759</span>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-brands fa-whatsapp mt-1 text-secondary-blue"></i>
+                            <a href="#" class="hover:text-secondary-blue transition-colors">+8615258955759</a>
                         </li>
-                        <li class="flex items-center text-gray-300">
-                            <i class="fab fa-vk mr-2"></i>
-                            <span>+8615258955759</span>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-brands fa-telegram mt-1 text-secondary-blue"></i>
+                            <a href="#" class="hover:text-secondary-blue transition-colors">+8615258955759</a>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-brands fa-instagram mt-1 text-secondary-blue"></i>
+                            <a href="#" class="hover:text-secondary-blue transition-colors">@source-offer</a>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-secondary-blue"></i>
+                            <span>YIWU, Китай</span>
                         </li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="border-t border-blue-800 mt-8 pt-8 text-center text-gray-300">
-                <p>&copy; 2025 申沃进出口 source-offer 版权所有</p>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p data-translate="footer-copyright">&copy; 2025 source-offer. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
-    <!-- 本地 JS 脚本 -->
-    <script src="js/script.js"></script>
+    <!-- Back to Top Button -->
+    <a href="#" class="fixed bottom-6 right-6 bg-primary-blue text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-secondary-blue transition-colors z-50">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // Language Translation
+        const translations = {
+            ru: {
+                'nav-opt': 'Оптовые закупки',
+                'nav-delivery': 'Доставка грузов',
+                'nav-suppliers': 'Поиск поставщиков',
+                'nav-translation': 'Переводы',
+                'nav-tour': 'Мебельный тур',
+                'nav-other': 'Другие услуги',
+                'hero-title': 'Бизнес услуги в Китае',
+                'hero-text': 'Представительство, переводы, посредничество, оптовые закупки и доставка грузов из Китая в Россию и страны СНГ',
+                'hero-button': 'Узнать больше о услугах',
+                'services-title': 'Наши услуги',
+                'service-opt-title': 'Оптовые закупки из Китая',
+                'service-opt-1': 'Закупки с 1688.com, Poizon/Dewu',
+                'service-opt-2': 'Закупки напрямую из фабрик',
+                'service-opt-3': 'Посредничество в оптовых сделках',
+                'service-delivery-title': 'Доставка грузов из Китая',
+                'service-delivery-1': 'Логистика по всей территории Китая',
+                'service-delivery-2': 'Доставка в Россию и страны СНГ',
+                'service-delivery-3': 'Консолидация и упаковка грузов',
+                'service-suppliers-title': 'Поиск поставщиков',
+                'service-suppliers-1': 'Поиск надежных китайских поставщиков',
+                'service-suppliers-2': 'Проверка компании и качества продукции',
+                'service-suppliers-3': 'Организация встреч с представителями',
+                'service-translation-title': 'Переводческие услуги',
+                'service-translation-1': 'Синхронный и асинхронный перевод',
+                'service-translation-2': 'Перевод контрактов и документов',
+                'service-translation-3': 'Перевод на китайский, русский и английский',
+                'service-tour-title': 'Мебельный тур в Китай',
+                'service-tour-1': 'Организация бизнес-туров по Китаю',
+                'service-tour-2': 'Посещение фабрик и выставок',
+                'service-tour-3': 'Организация проживания и транспорта',
+                'service-other-title': 'Другие услуги',
+                'service-other-1': 'Юридическая поддержка',
+                'service-other-2': 'Бухгалтерские услуги',
+                'service-other-3': 'Помощь в получении визы',
+                'about-title': 'О себе',
+                'about-contact': 'Контактная информация:',
+                'about-phone': 'Телефон/微信',
+                'about-email': 'Электронная почта',
+                'about-vk': 'VK',
+                'about-instagram': 'Instagram',
+                'about-person': 'Контактное лицо',
+                'footer-about': 'О компании',
+                'footer-services': 'Услуги',
+                'footer-contacts': 'Контакты',
+                'footer-copyright': '© 2025 source-offer. Все права защищены.'
+            },
+            uk: {
+                'nav-opt': 'Оптові закупівлі',
+                'nav-delivery': 'Доставка вантажів',
+                'nav-suppliers': 'Пошук постачальників',
+                'nav-translation': 'Переклади',
+                'nav-tour': 'Меблевий тур',
+                'nav-other': 'Інші послуги',
+                'hero-title': 'Бізнес-послуги в Китаї',
+                'hero-text': 'Представництво, переклади, посередництво, оптові закупівлі та доставка вантажів з Китаю до України та країн СНГ',
+                'hero-button': 'Дізнатися більше про послуги',
+                'services-title': 'Наші послуги',
+                'service-opt-title': 'Оптові закупівлі з Китаю',
+                'service-opt-1': 'Закупки з 1688.com, Poizon/Dewu',
+                'service-opt-2': 'Закупки безпосередньо з фабрик',
+                'service-opt-3': 'Посередництво в оптових угоди',
+                'service-delivery-title': 'Доставка вантажів з Китаю',
+                'service-delivery-1': 'Логістика по всій території Китаю',
+                'service-delivery-2': 'Доставка до України та країн СНГ',
+                'service-delivery-3': 'Консолідація та упаковка вантажів',
+                'service-suppliers-title': 'Пошук постачальників',
+                'service-suppliers-1': 'Пошук надійних китайських постачальників',
+                'service-suppliers-2': 'Перевірка компанії та якості продукції',
+                'service-suppliers-3': 'Організація зустрічей з представниками',
+                'service-translation-title': 'Перекладські послуги',
+                'service-translation-1': 'Синхронний та асинхронний переклад',
+                'service-translation-2': 'Переклад контрактів та документів',
+                'service-translation-3': 'Переклад на китайську, українську та англійську',
+                'service-tour-title': 'Меблевий тур в Китай',
+                'service-tour-1': 'Організація бізнес-турів по Китаю',
+                'service-tour-2': 'Відвідування фабрик та виставок',
+                'service-tour-3': 'Організація проживання та транспорту',
+                'service-other-title': 'Інші послуги',
+                'service-other-1': 'Юридична підтримка',
+                'service-other-2': 'Бухгалтерські послуги',
+                'service-other-3': 'Допомога у отриманні візи',
+                'about-title': 'Про себе',
+                'about-contact': 'Контактна інформація:',
+                'about-phone': 'Телефон/微信',
+                'about-email': 'Електронна пошта',
+                'about-vk': 'VK',
+                'about-instagram': 'Instagram',
+                'about-person': 'Контактна особа',
+                'footer-about': 'Про компанію',
+                'footer-services': 'Послуги',
+                'footer-contacts': 'Контакти',
+                'footer-copyright': '© 2025 source-offer. Всі права захищено.'
+            }
+        };
+
+        function setLanguage(lang) {
+            // Update all translatable elements
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Update language switcher buttons
+            document.getElementById('lang-ru').classList.toggle('bg-white', lang === 'ru');
+            document.getElementById('lang-ru').classList.toggle('bg-transparent', lang === 'uk');
+            document.getElementById('lang-uk').classList.toggle('bg-white', lang === 'uk');
+            document.getElementById('lang-uk').classList.toggle('bg-transparent', lang === 'ru');
+            document.getElementById('lang-ru').classList.toggle('text-primary-blue', lang === 'ru');
+            document.getElementById('lang-ru').classList.toggle('text-white', lang === 'uk');
+            document.getElementById('lang-uk').classList.toggle('text-primary-blue', lang === 'uk');
+            document.getElementById('lang-uk').classList.toggle('text-white', lang === 'ru');
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+
+            // Save language preference to localStorage
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Event listeners for language buttons
+        document.getElementById('lang-ru').addEventListener('click', () => setLanguage('ru'));
+        document.getElementById('lang-uk').addEventListener('click', () => setLanguage('uk'));
+
+        // Initialize with saved language or default (Russian)
+        const savedLang = localStorage.getItem('preferredLanguage') || 'ru';
+        setLanguage(savedLang);
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+                nav.classList.remove('shadow-sm');
+            } else {
+                nav.classList.add('shadow-sm');
+                nav.classList.remove('shadow-md');
+            }
+        });
+
+        // Mobile Menu Toggle (basic functionality)
+        const menuBtn = document.querySelector('.md\:hidden');
+        menuBtn.addEventListener('click', function() {
+            // Add mobile menu functionality here (expand/collapse)
+            alert('Мобільне меню буде додано в наступній версії');
+        });
+    </script>
 </body>
 </html>
